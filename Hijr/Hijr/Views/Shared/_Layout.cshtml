@@ -9,7 +9,7 @@
 
 </head>
 <body>
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar  navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -43,13 +43,41 @@
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
+            <div class="jumbotron">
+                <span class="text-success"><h3>Pengurusan Jemaah Haji</h3></span>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                    <li class="dropdown messages-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            Home
+                            <i class="ion ion-ios7-gear" style="font-size: large" data-toggle="tooltip" data-placement="bottom" title="System Administration"></i>
+                        </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                @Html.ActionLink("User Management", "Index", "UserManagement")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Customer Information", "Index", "Customer")
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#">Example of Separated link</a></li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
         </div>
+        
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year</p>
         </footer>
     </div>
 

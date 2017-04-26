@@ -4024,7 +4024,6 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar {
   position: relative;
-  background-color:#eff5f5;
   z-index: 1000;
   min-height: 50px;
   margin-bottom: 20px;
@@ -4936,7 +4935,7 @@ a.list-group-item.active > .badge,
   font-weight: 200;
   line-height: 2.1428571435;
   color: inherit;
-  background-color: #eeeeee;
+  background-color: #000000;
 }
 
 .jumbotron h1 {
