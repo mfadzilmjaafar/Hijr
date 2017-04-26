@@ -4024,6 +4024,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
 
 .navbar {
   position: relative;
+  background-color:#eff5f5;
   z-index: 1000;
   min-height: 50px;
   margin-bottom: 20px;
@@ -4283,6 +4284,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
     padding-top: 15px;
     padding-bottom: 15px;
   }
+   
 }
 
 @media (min-width: 768px) {
