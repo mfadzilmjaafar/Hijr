@@ -4027,7 +4027,7 @@ textarea.input-group-sm > .input-group-btn > .btn {
   z-index: 1000;
   min-height: 50px;
   margin-bottom: 20px;
-  border: 1px solid transparent;
+  /*border:1px solid transparent;*/
 }
 
 .navbar:before,
@@ -4930,7 +4930,7 @@ a.list-group-item.active > .badge,
 
 .jumbotron {
   padding: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 0px;
   font-size: 21px;
   font-weight: 200;
   line-height: 2.1428571435;

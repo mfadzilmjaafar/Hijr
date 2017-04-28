@@ -4,12 +4,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - HIJR</title>
+    <link rel="icon" href="~/img/th-small-logo.png" />
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar  navbar-fixed-top">
+    <div class="navbar navbar-default  navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -18,16 +19,16 @@
                     <span class="icon-bar"></span>
                 </button>
                 @*@Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })*@
-                <img src="~/img/th-logo.png" alt="" />
+                <img src="~/img/th-logo-1.png" alt="" />
+                
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                    
                     <li class="dropdown messages-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Home
-                            <i class="ion ion-ios7-gear" style="font-size: large" data-toggle="tooltip"  data-placement="bottom" title="System Administration"></i>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">@*Korporat*@
                         </a>
-                        <ul class="dropdown-menu" role="menu">
+                        @*<ul class="dropdown-menu" role="menu">
                             <li>
                                 @Html.ActionLink("User Management", "Index", "UserManagement")
                             </li>
@@ -36,48 +37,66 @@
                             </li>
                             <li class="divider"></li>
                             <li><a href="#">Example of Separated link</a></li>
-                        </ul>
+                        </ul>*@
                     </li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li><a href="#">@*Simpanan*@</a></li>
+                    <li><a href="#">@*Haji*@</a></li>
+                    <li><a href="#">@*Pelaburan*@</a></li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @*@Html.Partial("_LoginPartial")*@
             </div>
             <div class="jumbotron">
                 <span class="text-success"><h3>Pengurusan Jemaah Haji</h3></span>
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse navbar-hijr collapse">
                 <ul class="nav navbar-nav">
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
                     <li class="dropdown messages-menu">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Home
-                            <i class="ion ion-ios7-gear" style="font-size: large" data-toggle="tooltip" data-placement="bottom" title="System Administration"></i>
+                            Tawaran
                         </a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                @Html.ActionLink("User Management", "Index", "UserManagement")
+                                @*@Html.ActionLink("Pertanyaan Surat Tawaran", "Index", "Tawaran")*@
+                                <a href="#" id="pertanyaan">Pertanyaan Surat Tawaran</a>
                             </li>
                             <li>
-                                @Html.ActionLink("Customer Information", "Index", "Customer")
+                                <a href="#" id="paparsurat">Papar Surat Tawaran</a>
+                            </li>
+                            <li>
+                                <a href="#" id="pengesahan">Pengesahan</a>
+                            </li>
+                            <li>
+                                <a href="#" id="ecard">Isu e-Card</a>
                             </li>
                             <li class="divider"></li>
                             <li><a href="#">Example of Separated link</a></li>
                         </ul>
                     </li>
+                    <li class="dropdown messages-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Kursus</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" id="pertanyaan">Kemaskini Kehadiran</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Kesihatan</a></li>
+                    <li><a href="#">Passport/Visa</a></li>
+                    <li><a href="#">Daftar Masuk</a></li>
+                    <li><a href="#">Maklumat</a></li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+               
         </div>
         
+    </div>
     </div>
     <div class="container body-content">
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year</p>
+            <p>&copy; @DateTime.Now.Year-Tabung Haji</p>
         </footer>
     </div>
 
