@@ -25,7 +25,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     
-                    <li class="dropdown messages-menu">
+                    <li class="dropdown messages-menu" >
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">@*Korporat*@
                         </a>
                         @*<ul class="dropdown-menu" role="menu">
@@ -46,7 +46,7 @@
                 @*@Html.Partial("_LoginPartial")*@
             </div>
             <div class="jumbotron">
-                <span class="text-success"><h3>Pengurusan Jemaah Haji</h3></span>
+                <span class="text-success"><h2>HIJR</h2></span>
             </div>
             <div class="navbar-collapse navbar-hijr collapse">
                 <ul class="nav navbar-nav">
@@ -55,19 +55,19 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             Tawaran
                         </a>
-                        <ul class="dropdown-menu" role="menu">
+                        <ul class="dropdown-menu" role="menu" >
                             <li>
                                 @*@Html.ActionLink("Pertanyaan Surat Tawaran", "Index", "Tawaran")*@
-                                <a href="#" id="pertanyaan">Pertanyaan Surat Tawaran</a>
+                                <a href="#" id="pertanyaan" class="hijr_menu" data-rel="div_pertanyaan">Pertanyaan Surat Tawaran</a>
                             </li>
                             <li>
-                                <a href="#" id="paparsurat">Papar Surat Tawaran</a>
+                                <a href="#" id="paparsurat" class="hijr_menu" data-rel="div_paparsurat">Papar Surat Tawaran</a>
                             </li>
                             <li>
-                                <a href="#" id="pengesahan">Pengesahan</a>
+                                <a href="#" id="pengesahan" class="hijr_menu" data-rel="div_pengesahan">Pengesahan</a>
                             </li>
                             <li>
-                                <a href="#" id="ecard">Isu e-Card</a>
+                                <a href="#" id="ecard" class="hijr_menu" data-rel="div_ecard">Isu e-Card</a>
                             </li>
                             <li class="divider"></li>
                             <li><a href="#">Example of Separated link</a></li>
@@ -76,13 +76,41 @@
                     <li class="dropdown messages-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Kursus</a>
                         <ul class="dropdown-menu" role="menu">
                             <li>
-                                <a href="#" id="pertanyaan">Kemaskini Kehadiran</a>
+                                <a href="#" id="kursus" class="hijr_menu" data-rel="div_kursuskehadiran">Kemaskini Kehadiran</a>
                             </li>
                         </ul>
                     </li>
-                    <li><a href="#">Kesihatan</a></li>
-                    <li><a href="#">Passport/Visa</a></li>
-                    <li><a href="#">Daftar Masuk</a></li>
+                    <li class="dropdown messages-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Kesihatan</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" id="kesihatanpengesahan" class="hijr_menu" data-rel="div_kesihatanpengesahan">Pengesahan</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown messages-menu"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Passport/Visa</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" id="passportpenerimaan" class="hijr_menu" data-rel="div_passportpenerimaan">Penerimaan</a>
+                            </li>
+                            <li>
+                                <a href="#" id="passportpenyerahan" class="hijr_menu" data-rel="div_passportpenyerahan">Penyerahan</a>
+                            </li>
+                            <li>
+                                <a href="#" id="passportbagasi" class="hijr_menu" data-rel="div_passportbagasi">Bagasi</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="dropdown messages-menu">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Daftar Masuk</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>
+                                <a href="#" id="daftarkelanajaya" class="hijr_menu" data-rel="div_daftarkelanajaya">Kelana Jaya</a>
+                            </li>
+                            <li>
+                                <a href="#" id="daftarhotel" class="hijr_menu" data-rel="div_daftarhotels">Hotel</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li><a href="#">Maklumat</a></li>
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>

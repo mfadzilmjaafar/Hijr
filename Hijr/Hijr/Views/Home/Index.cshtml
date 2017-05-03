@@ -52,8 +52,8 @@
         </div>
     </div>
     <div class="col-md-7">
-        <form class="form-horizontal" id="div_pertanyaan">
-            <div class="panel panel-success">
+        <form class="form-horizontal form_hijr">
+            <div class="panel panel-success" id="div_pertanyaan">
                 <div class="panel-heading">
                     <h3 class="panel-title">Pertanyaan</h3>
                 </div>
@@ -73,10 +73,8 @@
 
                 </div>
             </div>
-        </form>
 
-        <form class="form-horizontal" id="div_paparsurat" style="display:none">
-            <div class="panel panel-success">
+            <div class="panel panel-success" id="div_paparsurat" style="display:none">
                 <div class="panel-heading">
                     <h3 class="panel-title">Papar Surat Tawaran</h3>
                 </div>
@@ -89,10 +87,8 @@
 
                 </div>
             </div>
-        </form>
 
-        <form class="form-horizontal" id="div_pengesahan" style="display:none">
-            <div class="panel panel-success">
+            <div class="panel panel-success" id="div_pengesahan" style="display:none">
                 <div class="panel-heading">
                     <h3 class="panel-title">Pengesahan</h3>
                 </div>
@@ -110,15 +106,13 @@
 
                     <div class="form-group">
                         <div class="col-md-offset-3 col-md-9">
-                            <input type="submit" class="btn btn-default" value="Hantar" />
+                            <input type="button" class="btn btn-default" value="Hantar" />
                         </div>
                     </div>
                 </div>
             </div>
-        </form>
 
-        <form class="form-horizontal" id="div_ecard" style="display:none">
-            <div class="panel panel-success">
+            <div class="panel panel-success" id="div_ecard" style="display:none">
                 <div class="panel-heading">
                     <h3 class="panel-title">Penyerahan eCard</h3>
                 </div>
@@ -131,112 +125,15 @@
 
                 </div>
             </div>
+
+            @Html.Partial("_KursusKehadiranPartial")
+            @Html.Partial("_KesihatanPengesahan")
+            @Html.Partial("_PassportVisaBagasi")
         </form>
-    </div>
-</div>
-@*<div class="row" id="div_pertanyaan">
-    
-        <h4>Pertanyaan.</h4>
-        <hr />
-        <div class="form-group">
-            <label for="icinput" class="col-md-2 control-label">No KP Semasa</label>
-            <div class="col-md-10">
-                <input class="form-control" id="icinput" type="text" value="">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="button" class="btn btn-default" value="Hantar" id="btn_pertanyaan" />
-            </div>
-        </div>
-    
-</div>*@
-
-<div class="row" id="div_maklumatpeserta" style="display:none">
-    <div class="col-md-12">
-        <div class="text-center">
-            <img src="~/img/Picture1.png" class="img-rounded" alt="...">
-        </div>
-        <div class="text-center">
-            <label for="icinput" class="control-label">Nama:</label>
-            <label>Aida</label>
-        </div>
-        <div class="text-center">
-            <label for="icinput" class="control-label">No Kp Semasa:</label>
-            <label>78xxxxxxxxx</label>
-        </div>
-        <div class="text-center">
-            <label for="icinput" class="control-label">Alamat:</label>
-            <label>
-                49 Jalan XX
-                SP xx
-                Bandar Saujana Putra
-                Jenjarom, Selangor
-            </label>
-        </div>
-        <div class="text-center">
-            <label for="icinput" class="control-label">No Akaun TH:</label>
-            <label>456456488</label>
-        </div>
-        <div class="text-center">
-            <label for="icinput" class="control-label">No KT:</label>
-            <label>1</label>
-        </div>
-        <div class="text-center">
-            <label for="icinput" class="control-label">No Kumpulan:</label>
-            <label>1</label>
-        </div>
-    </div>
-</div>
-
-@*<div class="row" id="div_paparsurat" style="display:none">
-    <div class="col-md-12">
-        <h4>Papar Surat Tawaran.</h4>
-        <hr />
-        <div class="text-center">
-            <div class="form-group">
-                <input type="button" class="btn btn-success" value="Papar Surat Tawaran" />
-            </div>
-        </div>
-    </div>
-
-</div>*@
-
-@*<div class="row" id="div_pengesahan" style="display:none">
-    <div class="col-md-12">
-        <h4>Pengesahan.</h4>
-        <hr />
-        <div class="form-group">
-            <label for="icinput" class="col-md-2 control-label">No KP Semasa</label>
-            <div class="col-md-10">
-                <input class="form-control" id="icinput" type="text" value="">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" class="btn btn-default" value="Hantar" />
-            </div>
-        </div>
         
     </div>
-</div>*@
+</div>
 
-@*<div class="row" id="div_ecard" style="display:none">
-    <div class="col-md-12">
-
-        <div class="text-center">
-           
-                <div class="form-group">
-
-                    <input type="button" class="btn btn-success" value="Isu eCard" />
-
-                </div>
-            </div>
-    </div>
-
-</div>*@
 @section scripts{
     <script>
         $(document).ready(function () {
@@ -246,38 +143,46 @@
                 $('#div_mockempty').hide();
             });
 
-            $('#pertanyaan').click(function () {
-                $('#div_mockempty').show('normal');
-                $('#div_mock').hide();
-
-                $('#div_paparsurat').hide();
-                $('#div_pengesahan').hide();
-                $('#div_ecard').hide();
+            $(".hijr_menu").click(function (e) {
+                //$(".form_hijr div").fadeOut('slow');
+                //$('#' + $(this).data('rel')).show('slow');
+                var target = $(this).data('rel');
+                $("#" + target).show('normal').siblings("div").hide('normal');
             });
 
-            $('#paparsurat').click(function () {
-                $('#div_paparsurat').show('normal');
+            //$('#pertanyaan').click(function () {
+            //    $('#div_mockempty').show('normal');
+            //    $('#div_mock').hide();
+            //    $('#div_pertanyaan').show('normal');
 
-                $('#div_pengesahan').hide();
-                $('#div_pertanyaan').hide();
-                $('#div_ecard').hide();
-            });
+            //    $('#div_paparsurat').hide();
+            //    $('#div_pengesahan').hide();
+            //    $('#div_ecard').hide();
+            //});
 
-            $('#pengesahan').click(function () {
-                $('#div_pengesahan').show('normal');
+            //$('#paparsurat').click(function () {
+            //    $('#div_paparsurat').show('normal');
 
-                $('#div_paparsurat').hide();
-                $('#div_pertanyaan').hide();
-                $('#div_ecard').hide();
-            });
+            //    $('#div_pengesahan').hide();
+            //    $('#div_pertanyaan').hide();
+            //    $('#div_ecard').hide();
+            //});
 
-            $('#ecard').click(function () {
-                $('#div_ecard').show('normal');
+            //$('#pengesahan').click(function () {
+            //    $('#div_pengesahan').show('normal');
 
-                $('#div_pengesahan').hide();
-                $('#div_paparsurat').hide();
-                $('#div_pertanyaan').hide();
-            });
+            //    $('#div_paparsurat').hide();
+            //    $('#div_pertanyaan').hide();
+            //    $('#div_ecard').hide();
+            //});
+
+            //$('#ecard').click(function () {
+            //    $('#div_ecard').show('normal');
+
+            //    $('#div_pengesahan').hide();
+            //    $('#div_paparsurat').hide();
+            //    $('#div_pertanyaan').hide();
+            //});
         });
     </script>
     }

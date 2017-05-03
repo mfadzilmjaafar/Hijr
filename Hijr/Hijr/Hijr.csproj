@@ -243,6 +243,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Tawaran\Index.cshtml" />
+    <Content Include="Views\Home\_KursusKehadiranPartial.cshtml" />
+    <Content Include="Views\Home\_KesihatanPengesahan.cshtml" />
+    <Content Include="Views\Home\_PassportVisaBagasi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
