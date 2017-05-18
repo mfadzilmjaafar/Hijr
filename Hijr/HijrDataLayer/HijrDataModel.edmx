@@ -1,0 +1,704 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HIJRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CardStock">
+          <Key>
+            <PropertyRef Name="serial_no" />
+          </Key>
+          <Property Name="reg_date" Type="varchar" MaxLength="8" />
+          <Property Name="reg_time" Type="varchar" MaxLength="6" />
+          <Property Name="serial_no" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="1" />
+          <Property Name="reg_id" Type="varchar" MaxLength="20" />
+          <Property Name="first_sn" Type="varchar" MaxLength="20" />
+          <Property Name="last_sn" Type="varchar" MaxLength="20" />
+          <Property Name="custdist_date" Type="varchar" MaxLength="8" />
+          <Property Name="custdist_time" Type="varchar" MaxLength="6" />
+          <Property Name="custdist_id" Type="varchar" MaxLength="20" />
+          <Property Name="custIDNo" Type="varchar" MaxLength="12" />
+          <Property Name="damage_date" Type="varchar" MaxLength="8" />
+          <Property Name="damage_time" Type="varchar" MaxLength="6" />
+          <Property Name="damage_id" Type="varchar" MaxLength="20" />
+          <Property Name="remarks" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="CIF">
+          <Key>
+            <PropertyRef Name="NoIC" />
+          </Key>
+          <Property Name="NoIC" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Nama" Type="varchar" MaxLength="80" />
+          <Property Name="Alamat1" Type="varchar" MaxLength="80" />
+          <Property Name="Alamat2" Type="varchar" MaxLength="80" />
+          <Property Name="Alamat3" Type="varchar" MaxLength="80" />
+          <Property Name="Poskod" Type="varchar" MaxLength="5" />
+          <Property Name="Bandar" Type="varchar" MaxLength="40" />
+          <Property Name="KodNegeri" Type="varchar" MaxLength="2" />
+          <Property Name="NoTel" Type="varchar" MaxLength="20" />
+          <Property Name="PicPath" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="DokumenRujukan">
+          <Key>
+            <PropertyRef Name="NoIC" />
+          </Key>
+          <Property Name="NoIC" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="PathImejSurat" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="DokumenTravel">
+          <Key>
+            <PropertyRef Name="NoIC" />
+          </Key>
+          <Property Name="NoIC" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="NoPasport" Type="varchar" MaxLength="20" />
+          <Property Name="NoVisa" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Kesihatan">
+          <Key>
+            <PropertyRef Name="NoIC" />
+          </Key>
+          <Property Name="NoIC" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Layak" Type="varchar" MaxLength="10" />
+          <Property Name="Maklumat" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Penempatan">
+          <Key>
+            <PropertyRef Name="NoIC" />
+          </Key>
+          <Property Name="NoIC" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="NoAkaun" Type="varchar" MaxLength="15" />
+          <Property Name="NoKT" Type="varchar" MaxLength="3" />
+          <Property Name="NoKumpulan" Type="varchar" MaxLength="5" />
+          <Property Name="NoMaktab" Type="varchar" MaxLength="5" />
+          <Property Name="NoKursus" Type="int" />
+          <Property Name="NoHotel1" Type="varchar" MaxLength="5" />
+          <Property Name="NoBilik1" Type="varchar" MaxLength="10" />
+          <Property Name="NoHotel2" Type="varchar" MaxLength="5" />
+          <Property Name="NoBilik2" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Pergerakan">
+          <Key>
+            <PropertyRef Name="NoIC" />
+          </Key>
+          <Property Name="NoIC" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="Sah" Type="varchar" MaxLength="1" />
+          <Property Name="Kursus" Type="varchar" MaxLength="1" />
+          <Property Name="Kesihatan" Type="varchar" MaxLength="1" />
+          <Property Name="TPassJH" Type="varchar" MaxLength="1" />
+          <Property Name="SPassJH" Type="varchar" MaxLength="1" />
+          <Property Name="Bagasi" Type="varchar" MaxLength="1" />
+          <Property Name="KelanaJaya" Type="varchar" MaxLength="1" />
+          <Property Name="HotelMekah" Type="varchar" MaxLength="1" />
+          <Property Name="HotelMadinah" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="RefBagasi">
+          <Key>
+            <PropertyRef Name="No" />
+          </Key>
+          <Property Name="No" Type="int" Nullable="false" />
+          <Property Name="MaklumatBagasi" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RefKursusPerdana">
+          <Key>
+            <PropertyRef Name="NoKursus" />
+          </Key>
+          <Property Name="NoKursus" Type="int" Nullable="false" />
+          <Property Name="KodNegeri" Type="varchar" MaxLength="2" />
+          <Property Name="Lokasi" Type="varchar" MaxLength="150" />
+          <Property Name="Tarikh" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <EntityType Name="RefNegeri">
+          <Key>
+            <PropertyRef Name="KodNegeri" />
+          </Key>
+          <Property Name="KodNegeri" Type="varchar" MaxLength="2" Nullable="false" />
+          <Property Name="Negeri" Type="varchar" MaxLength="40" />
+        </EntityType>
+        <Association Name="FK_CardStock_CIF">
+          <End Role="CIF" Type="Self.CIF" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CardStock" Type="Self.CardStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CIF">
+              <PropertyRef Name="NoIC" />
+            </Principal>
+            <Dependent Role="CardStock">
+              <PropertyRef Name="custIDNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CIF_RefNegeri">
+          <End Role="RefNegeri" Type="Self.RefNegeri" Multiplicity="0..1" />
+          <End Role="CIF" Type="Self.CIF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefNegeri">
+              <PropertyRef Name="KodNegeri" />
+            </Principal>
+            <Dependent Role="CIF">
+              <PropertyRef Name="KodNegeri" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DokumenTravel_CIF">
+          <End Role="CIF" Type="Self.CIF" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="DokumenTravel" Type="Self.DokumenTravel" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CIF">
+              <PropertyRef Name="NoIC" />
+            </Principal>
+            <Dependent Role="DokumenTravel">
+              <PropertyRef Name="NoIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kesihatan_CIF">
+          <End Role="CIF" Type="Self.CIF" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Kesihatan" Type="Self.Kesihatan" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CIF">
+              <PropertyRef Name="NoIC" />
+            </Principal>
+            <Dependent Role="Kesihatan">
+              <PropertyRef Name="NoIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Penempatan_CIF">
+          <End Role="CIF" Type="Self.CIF" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Penempatan" Type="Self.Penempatan" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CIF">
+              <PropertyRef Name="NoIC" />
+            </Principal>
+            <Dependent Role="Penempatan">
+              <PropertyRef Name="NoIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Penempatan_RefKursusPerdana">
+          <End Role="RefKursusPerdana" Type="Self.RefKursusPerdana" Multiplicity="0..1" />
+          <End Role="Penempatan" Type="Self.Penempatan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefKursusPerdana">
+              <PropertyRef Name="NoKursus" />
+            </Principal>
+            <Dependent Role="Penempatan">
+              <PropertyRef Name="NoKursus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pergerakan_CIF">
+          <End Role="CIF" Type="Self.CIF" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Pergerakan" Type="Self.Pergerakan" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CIF">
+              <PropertyRef Name="NoIC" />
+            </Principal>
+            <Dependent Role="Pergerakan">
+              <PropertyRef Name="NoIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RefKursusPerdana_RefNegeri">
+          <End Role="RefNegeri" Type="Self.RefNegeri" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RefKursusPerdana" Type="Self.RefKursusPerdana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefNegeri">
+              <PropertyRef Name="KodNegeri" />
+            </Principal>
+            <Dependent Role="RefKursusPerdana">
+              <PropertyRef Name="KodNegeri" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HIJRModelStoreContainer">
+          <EntitySet Name="CardStock" EntityType="Self.CardStock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CIF" EntityType="Self.CIF" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DokumenRujukan" EntityType="Self.DokumenRujukan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DokumenTravel" EntityType="Self.DokumenTravel" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kesihatan" EntityType="Self.Kesihatan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Penempatan" EntityType="Self.Penempatan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pergerakan" EntityType="Self.Pergerakan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefBagasi" EntityType="Self.RefBagasi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefKursusPerdana" EntityType="Self.RefKursusPerdana" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RefNegeri" EntityType="Self.RefNegeri" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_CardStock_CIF" Association="Self.FK_CardStock_CIF">
+            <End Role="CIF" EntitySet="CIF" />
+            <End Role="CardStock" EntitySet="CardStock" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CIF_RefNegeri" Association="Self.FK_CIF_RefNegeri">
+            <End Role="RefNegeri" EntitySet="RefNegeri" />
+            <End Role="CIF" EntitySet="CIF" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DokumenTravel_CIF" Association="Self.FK_DokumenTravel_CIF">
+            <End Role="CIF" EntitySet="CIF" />
+            <End Role="DokumenTravel" EntitySet="DokumenTravel" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kesihatan_CIF" Association="Self.FK_Kesihatan_CIF">
+            <End Role="CIF" EntitySet="CIF" />
+            <End Role="Kesihatan" EntitySet="Kesihatan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Penempatan_CIF" Association="Self.FK_Penempatan_CIF">
+            <End Role="CIF" EntitySet="CIF" />
+            <End Role="Penempatan" EntitySet="Penempatan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Penempatan_RefKursusPerdana" Association="Self.FK_Penempatan_RefKursusPerdana">
+            <End Role="RefKursusPerdana" EntitySet="RefKursusPerdana" />
+            <End Role="Penempatan" EntitySet="Penempatan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pergerakan_CIF" Association="Self.FK_Pergerakan_CIF">
+            <End Role="CIF" EntitySet="CIF" />
+            <End Role="Pergerakan" EntitySet="Pergerakan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RefKursusPerdana_RefNegeri" Association="Self.FK_RefKursusPerdana_RefNegeri">
+            <End Role="RefNegeri" EntitySet="RefNegeri" />
+            <End Role="RefKursusPerdana" EntitySet="RefKursusPerdana" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HIJRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HIJREntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CardStocks" EntityType="HIJRModel.CardStock" />
+          <EntitySet Name="CIFs" EntityType="HIJRModel.CIF" />
+          <EntitySet Name="DokumenRujukans" EntityType="HIJRModel.DokumenRujukan" />
+          <EntitySet Name="DokumenTravels" EntityType="HIJRModel.DokumenTravel" />
+          <EntitySet Name="Kesihatans" EntityType="HIJRModel.Kesihatan" />
+          <EntitySet Name="Pergerakans" EntityType="HIJRModel.Pergerakan" />
+          <EntitySet Name="RefBagasis" EntityType="HIJRModel.RefBagasi" />
+          <EntitySet Name="RefNegeris" EntityType="HIJRModel.RefNegeri" />
+          <AssociationSet Name="FK_CardStock_CIF" Association="HIJRModel.FK_CardStock_CIF">
+            <End Role="CIF" EntitySet="CIFs" />
+            <End Role="CardStock" EntitySet="CardStocks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DokumenTravel_CIF" Association="HIJRModel.FK_DokumenTravel_CIF">
+            <End Role="CIF" EntitySet="CIFs" />
+            <End Role="DokumenTravel" EntitySet="DokumenTravels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Kesihatan_CIF" Association="HIJRModel.FK_Kesihatan_CIF">
+            <End Role="CIF" EntitySet="CIFs" />
+            <End Role="Kesihatan" EntitySet="Kesihatans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Pergerakan_CIF" Association="HIJRModel.FK_Pergerakan_CIF">
+            <End Role="CIF" EntitySet="CIFs" />
+            <End Role="Pergerakan" EntitySet="Pergerakans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CIF_RefNegeri" Association="HIJRModel.FK_CIF_RefNegeri">
+            <End Role="RefNegeri" EntitySet="RefNegeris" />
+            <End Role="CIF" EntitySet="CIFs" />
+          </AssociationSet>
+          <EntitySet Name="Penempatans" EntityType="HIJRModel.Penempatan" />
+          <EntitySet Name="RefKursusPerdanas" EntityType="HIJRModel.RefKursusPerdana" />
+          <AssociationSet Name="FK_Penempatan_CIF" Association="HIJRModel.FK_Penempatan_CIF">
+            <End Role="CIF" EntitySet="CIFs" />
+            <End Role="Penempatan" EntitySet="Penempatans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Penempatan_RefKursusPerdana" Association="HIJRModel.FK_Penempatan_RefKursusPerdana">
+            <End Role="RefKursusPerdana" EntitySet="RefKursusPerdanas" />
+            <End Role="Penempatan" EntitySet="Penempatans" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RefKursusPerdana_RefNegeri" Association="HIJRModel.FK_RefKursusPerdana_RefNegeri">
+            <End Role="RefNegeri" EntitySet="RefNegeris" />
+            <End Role="RefKursusPerdana" EntitySet="RefKursusPerdanas" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="CardStock">
+          <Key>
+            <PropertyRef Name="serial_no" />
+          </Key>
+          <Property Name="reg_date" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="reg_time" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="serial_no" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="status" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="reg_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="first_sn" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="last_sn" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="custdist_date" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="custdist_time" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="custdist_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="custIDNo" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="damage_date" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="damage_time" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="damage_id" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="remarks" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CIF" Relationship="HIJRModel.FK_CardStock_CIF" FromRole="CardStock" ToRole="CIF" />
+        </EntityType>
+        <EntityType Name="CIF">
+          <Key>
+            <PropertyRef Name="NoIC" />
+          </Key>
+          <Property Name="NoIC" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Nama" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Alamat1" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Alamat2" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Alamat3" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <Property Name="Poskod" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="Bandar" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="KodNegeri" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="NoTel" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PicPath" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CardStocks" Relationship="HIJRModel.FK_CardStock_CIF" FromRole="CIF" ToRole="CardStock" />
+          <NavigationProperty Name="DokumenTravel" Relationship="HIJRModel.FK_DokumenTravel_CIF" FromRole="CIF" ToRole="DokumenTravel" />
+          <NavigationProperty Name="Kesihatan" Relationship="HIJRModel.FK_Kesihatan_CIF" FromRole="CIF" ToRole="Kesihatan" />
+          <NavigationProperty Name="Pergerakan" Relationship="HIJRModel.FK_Pergerakan_CIF" FromRole="CIF" ToRole="Pergerakan" />
+          <NavigationProperty Name="RefNegeri" Relationship="HIJRModel.FK_CIF_RefNegeri" FromRole="CIF" ToRole="RefNegeri" />
+          <NavigationProperty Name="Penempatan" Relationship="HIJRModel.FK_Penempatan_CIF" FromRole="CIF" ToRole="Penempatan" />
+        </EntityType>
+        <EntityType Name="DokumenRujukan">
+          <Key>
+            <PropertyRef Name="NoIC" />
+          </Key>
+          <Property Name="NoIC" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="PathImejSurat" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DokumenTravel">
+          <Key>
+            <PropertyRef Name="NoIC" />
+          </Key>
+          <Property Name="NoIC" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="NoPasport" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="NoVisa" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CIF" Relationship="HIJRModel.FK_DokumenTravel_CIF" FromRole="DokumenTravel" ToRole="CIF" />
+        </EntityType>
+        <EntityType Name="Kesihatan">
+          <Key>
+            <PropertyRef Name="NoIC" />
+          </Key>
+          <Property Name="NoIC" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Layak" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="Maklumat" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CIF" Relationship="HIJRModel.FK_Kesihatan_CIF" FromRole="Kesihatan" ToRole="CIF" />
+        </EntityType>
+        <EntityType Name="Pergerakan">
+          <Key>
+            <PropertyRef Name="NoIC" />
+          </Key>
+          <Property Name="NoIC" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="Sah" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Kursus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Kesihatan" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="TPassJH" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="SPassJH" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Bagasi" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="KelanaJaya" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="HotelMekah" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="HotelMadinah" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CIF" Relationship="HIJRModel.FK_Pergerakan_CIF" FromRole="Pergerakan" ToRole="CIF" />
+        </EntityType>
+        <EntityType Name="RefBagasi">
+          <Key>
+            <PropertyRef Name="No" />
+          </Key>
+          <Property Name="No" Type="Int32" Nullable="false" />
+          <Property Name="MaklumatBagasi" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="RefNegeri">
+          <Key>
+            <PropertyRef Name="KodNegeri" />
+          </Key>
+          <Property Name="KodNegeri" Type="String" Nullable="false" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Negeri" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CIFs" Relationship="HIJRModel.FK_CIF_RefNegeri" FromRole="RefNegeri" ToRole="CIF" />
+          <NavigationProperty Name="RefKursusPerdanas" Relationship="HIJRModel.FK_RefKursusPerdana_RefNegeri" FromRole="RefNegeri" ToRole="RefKursusPerdana" />
+        </EntityType>
+        <Association Name="FK_CardStock_CIF">
+          <End Type="HIJRModel.CIF" Role="CIF" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HIJRModel.CardStock" Role="CardStock" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CIF">
+              <PropertyRef Name="NoIC" />
+            </Principal>
+            <Dependent Role="CardStock">
+              <PropertyRef Name="custIDNo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DokumenTravel_CIF">
+          <End Type="HIJRModel.CIF" Role="CIF" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HIJRModel.DokumenTravel" Role="DokumenTravel" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CIF">
+              <PropertyRef Name="NoIC" />
+            </Principal>
+            <Dependent Role="DokumenTravel">
+              <PropertyRef Name="NoIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Kesihatan_CIF">
+          <End Type="HIJRModel.CIF" Role="CIF" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HIJRModel.Kesihatan" Role="Kesihatan" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CIF">
+              <PropertyRef Name="NoIC" />
+            </Principal>
+            <Dependent Role="Kesihatan">
+              <PropertyRef Name="NoIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Pergerakan_CIF">
+          <End Type="HIJRModel.CIF" Role="CIF" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HIJRModel.Pergerakan" Role="Pergerakan" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CIF">
+              <PropertyRef Name="NoIC" />
+            </Principal>
+            <Dependent Role="Pergerakan">
+              <PropertyRef Name="NoIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CIF_RefNegeri">
+          <End Type="HIJRModel.RefNegeri" Role="RefNegeri" Multiplicity="0..1" />
+          <End Type="HIJRModel.CIF" Role="CIF" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefNegeri">
+              <PropertyRef Name="KodNegeri" />
+            </Principal>
+            <Dependent Role="CIF">
+              <PropertyRef Name="KodNegeri" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Penempatan">
+          <Key>
+            <PropertyRef Name="NoIC" />
+          </Key>
+          <Property Name="NoIC" Type="String" Nullable="false" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="NoAkaun" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="NoKT" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="NoKumpulan" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="NoMaktab" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="NoKursus" Type="Int32" />
+          <Property Name="NoHotel1" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="NoBilik1" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NoHotel2" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="NoBilik2" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="CIF" Relationship="HIJRModel.FK_Penempatan_CIF" FromRole="Penempatan" ToRole="CIF" />
+          <NavigationProperty Name="RefKursusPerdana" Relationship="HIJRModel.FK_Penempatan_RefKursusPerdana" FromRole="Penempatan" ToRole="RefKursusPerdana" />
+        </EntityType>
+        <EntityType Name="RefKursusPerdana">
+          <Key>
+            <PropertyRef Name="NoKursus" />
+          </Key>
+          <Property Name="NoKursus" Type="Int32" Nullable="false" />
+          <Property Name="KodNegeri" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Lokasi" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Tarikh" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Penempatans" Relationship="HIJRModel.FK_Penempatan_RefKursusPerdana" FromRole="RefKursusPerdana" ToRole="Penempatan" />
+          <NavigationProperty Name="RefNegeri" Relationship="HIJRModel.FK_RefKursusPerdana_RefNegeri" FromRole="RefKursusPerdana" ToRole="RefNegeri" />
+        </EntityType>
+        <Association Name="FK_Penempatan_CIF">
+          <End Type="HIJRModel.CIF" Role="CIF" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HIJRModel.Penempatan" Role="Penempatan" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="CIF">
+              <PropertyRef Name="NoIC" />
+            </Principal>
+            <Dependent Role="Penempatan">
+              <PropertyRef Name="NoIC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Penempatan_RefKursusPerdana">
+          <End Type="HIJRModel.RefKursusPerdana" Role="RefKursusPerdana" Multiplicity="0..1" />
+          <End Type="HIJRModel.Penempatan" Role="Penempatan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefKursusPerdana">
+              <PropertyRef Name="NoKursus" />
+            </Principal>
+            <Dependent Role="Penempatan">
+              <PropertyRef Name="NoKursus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RefKursusPerdana_RefNegeri">
+          <End Type="HIJRModel.RefNegeri" Role="RefNegeri" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="HIJRModel.RefKursusPerdana" Role="RefKursusPerdana" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RefNegeri">
+              <PropertyRef Name="KodNegeri" />
+            </Principal>
+            <Dependent Role="RefKursusPerdana">
+              <PropertyRef Name="KodNegeri" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HIJRModelStoreContainer" CdmEntityContainer="HIJREntities">
+          <EntitySetMapping Name="CardStocks">
+            <EntityTypeMapping TypeName="HIJRModel.CardStock">
+              <MappingFragment StoreEntitySet="CardStock">
+                <ScalarProperty Name="remarks" ColumnName="remarks" />
+                <ScalarProperty Name="damage_id" ColumnName="damage_id" />
+                <ScalarProperty Name="damage_time" ColumnName="damage_time" />
+                <ScalarProperty Name="damage_date" ColumnName="damage_date" />
+                <ScalarProperty Name="custIDNo" ColumnName="custIDNo" />
+                <ScalarProperty Name="custdist_id" ColumnName="custdist_id" />
+                <ScalarProperty Name="custdist_time" ColumnName="custdist_time" />
+                <ScalarProperty Name="custdist_date" ColumnName="custdist_date" />
+                <ScalarProperty Name="last_sn" ColumnName="last_sn" />
+                <ScalarProperty Name="first_sn" ColumnName="first_sn" />
+                <ScalarProperty Name="reg_id" ColumnName="reg_id" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="serial_no" ColumnName="serial_no" />
+                <ScalarProperty Name="reg_time" ColumnName="reg_time" />
+                <ScalarProperty Name="reg_date" ColumnName="reg_date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CIFs">
+            <EntityTypeMapping TypeName="HIJRModel.CIF">
+              <MappingFragment StoreEntitySet="CIF">
+                <ScalarProperty Name="PicPath" ColumnName="PicPath" />
+                <ScalarProperty Name="NoTel" ColumnName="NoTel" />
+                <ScalarProperty Name="KodNegeri" ColumnName="KodNegeri" />
+                <ScalarProperty Name="Bandar" ColumnName="Bandar" />
+                <ScalarProperty Name="Poskod" ColumnName="Poskod" />
+                <ScalarProperty Name="Alamat3" ColumnName="Alamat3" />
+                <ScalarProperty Name="Alamat2" ColumnName="Alamat2" />
+                <ScalarProperty Name="Alamat1" ColumnName="Alamat1" />
+                <ScalarProperty Name="Nama" ColumnName="Nama" />
+                <ScalarProperty Name="NoIC" ColumnName="NoIC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DokumenRujukans">
+            <EntityTypeMapping TypeName="HIJRModel.DokumenRujukan">
+              <MappingFragment StoreEntitySet="DokumenRujukan">
+                <ScalarProperty Name="PathImejSurat" ColumnName="PathImejSurat" />
+                <ScalarProperty Name="NoIC" ColumnName="NoIC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DokumenTravels">
+            <EntityTypeMapping TypeName="HIJRModel.DokumenTravel">
+              <MappingFragment StoreEntitySet="DokumenTravel">
+                <ScalarProperty Name="NoVisa" ColumnName="NoVisa" />
+                <ScalarProperty Name="NoPasport" ColumnName="NoPasport" />
+                <ScalarProperty Name="NoIC" ColumnName="NoIC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kesihatans">
+            <EntityTypeMapping TypeName="HIJRModel.Kesihatan">
+              <MappingFragment StoreEntitySet="Kesihatan">
+                <ScalarProperty Name="Maklumat" ColumnName="Maklumat" />
+                <ScalarProperty Name="Layak" ColumnName="Layak" />
+                <ScalarProperty Name="NoIC" ColumnName="NoIC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pergerakans">
+            <EntityTypeMapping TypeName="HIJRModel.Pergerakan">
+              <MappingFragment StoreEntitySet="Pergerakan">
+                <ScalarProperty Name="HotelMadinah" ColumnName="HotelMadinah" />
+                <ScalarProperty Name="HotelMekah" ColumnName="HotelMekah" />
+                <ScalarProperty Name="KelanaJaya" ColumnName="KelanaJaya" />
+                <ScalarProperty Name="Bagasi" ColumnName="Bagasi" />
+                <ScalarProperty Name="SPassJH" ColumnName="SPassJH" />
+                <ScalarProperty Name="TPassJH" ColumnName="TPassJH" />
+                <ScalarProperty Name="Kesihatan" ColumnName="Kesihatan" />
+                <ScalarProperty Name="Kursus" ColumnName="Kursus" />
+                <ScalarProperty Name="Sah" ColumnName="Sah" />
+                <ScalarProperty Name="NoIC" ColumnName="NoIC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefBagasis">
+            <EntityTypeMapping TypeName="HIJRModel.RefBagasi">
+              <MappingFragment StoreEntitySet="RefBagasi">
+                <ScalarProperty Name="MaklumatBagasi" ColumnName="MaklumatBagasi" />
+                <ScalarProperty Name="No" ColumnName="No" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefNegeris">
+            <EntityTypeMapping TypeName="HIJRModel.RefNegeri">
+              <MappingFragment StoreEntitySet="RefNegeri">
+                <ScalarProperty Name="Negeri" ColumnName="Negeri" />
+                <ScalarProperty Name="KodNegeri" ColumnName="KodNegeri" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Penempatans">
+            <EntityTypeMapping TypeName="HIJRModel.Penempatan">
+              <MappingFragment StoreEntitySet="Penempatan">
+                <ScalarProperty Name="NoBilik2" ColumnName="NoBilik2" />
+                <ScalarProperty Name="NoHotel2" ColumnName="NoHotel2" />
+                <ScalarProperty Name="NoBilik1" ColumnName="NoBilik1" />
+                <ScalarProperty Name="NoHotel1" ColumnName="NoHotel1" />
+                <ScalarProperty Name="NoKursus" ColumnName="NoKursus" />
+                <ScalarProperty Name="NoMaktab" ColumnName="NoMaktab" />
+                <ScalarProperty Name="NoKumpulan" ColumnName="NoKumpulan" />
+                <ScalarProperty Name="NoKT" ColumnName="NoKT" />
+                <ScalarProperty Name="NoAkaun" ColumnName="NoAkaun" />
+                <ScalarProperty Name="NoIC" ColumnName="NoIC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RefKursusPerdanas">
+            <EntityTypeMapping TypeName="HIJRModel.RefKursusPerdana">
+              <MappingFragment StoreEntitySet="RefKursusPerdana">
+                <ScalarProperty Name="Tarikh" ColumnName="Tarikh" />
+                <ScalarProperty Name="Lokasi" ColumnName="Lokasi" />
+                <ScalarProperty Name="KodNegeri" ColumnName="KodNegeri" />
+                <ScalarProperty Name="NoKursus" ColumnName="NoKursus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

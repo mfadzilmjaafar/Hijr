@@ -4,43 +4,64 @@
 
 
 <div class="row">
-    <div class="col-md-5">
+    <div class="col-md-6">
+        <form class="form-horizontal">
         <div class="panel panel-success">
             <div class="panel-heading">
                 <h3 class="panel-title">Maklumat Peserta</h3>
             </div>
             <div class="panel-body" id="div_mock" style="display:none">
+                <div class="form-group">
                 <div class="text-center">
                     <img src="~/img/Picture1.png" class="img-rounded" alt="..." width="176" height="225" >
                 </div>
-                <div class="text-center">
-                    <label for="icinput" class="control-label">Nama:</label>
-                    <label>Noorhaifizah</label>
+                    </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">Nama</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control input-sm" id="Nama" readonly>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <label for="icinput" class="control-label">No Kp Semasa:</label>
-                    <label>78xxxxxxxxx</label>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">No KP Semasa</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control input-sm" id="NoKP" readonly>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <label for="icinput" class="control-label">Alamat:</label>
-                    <label>
-                        49 Jalan XX
-                        SP xx
-                        Bandar Saujana Putra
-                        Jenjarom, Selangor
-                    </label>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">Alamat</label>
+
+                    <div class="col-sm-9">
+                        <textarea class="form-control input-sm" rows="4" id="Alamat" readonly></textarea>
+                    </div>
+
                 </div>
-                <div class="text-center">
-                    <label for="icinput" class="control-label">No Akaun TH:</label>
-                    <label>456456488</label>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">No Akaun TH</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control input-sm" id="NoAkaun" readonly>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <label for="icinput" class="control-label">No KT:</label>
-                    <label>1</label>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">No KT</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control input-sm" id="NoKT" readonly>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <label for="icinput" class="control-label">No Kumpulan:</label>
-                    <label>1</label>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">No Kumpulan</label>
+
+                    <div class="col-sm-9">
+                        <input type="text" class="form-control input-sm" id="NoKumpulan" readonly>
+                    </div>
                 </div>
             </div>
 
@@ -50,8 +71,9 @@
                 </div>
             </div>
         </div>
+        </form>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-6">
         <form class="form-horizontal form_hijr">
             <div class="panel panel-success" id="div_pertanyaan">
                 <div class="panel-heading">
@@ -106,7 +128,7 @@
 
                     <div class="form-group">
                         <div class="col-md-offset-3 col-md-9">
-                            <input type="button" class="btn btn-default" value="Hantar" />
+                            <input type="button" class="btn btn-default" value="Hantar" id="btn_pengesahantawaran" />
                         </div>
                     </div>
                 </div>
@@ -119,30 +141,42 @@
                 <div class="panel-body">
                     <div class="text-center">
                         <div class="form-group">
-                            <input type="button" class="btn btn-success" value="Isu eCard" />
+                            <input type="button" id="btn_ecard" class="btn btn-success" value="Isu eCard" />
                         </div>
                     </div>
 
                 </div>
             </div>
 
+            @Html.Partial("_PesertaDetailPartial")
             @Html.Partial("_KursusKehadiranPartial")
             @Html.Partial("_KesihatanPengesahan")
             @Html.Partial("_PassportVisaBagasi")
+            @Html.Partial("_DaftarMasuk")
         </form>
         
     </div>
 </div>
 
 @section scripts{
+
     <script>
+
+        $body = $("body");
+        $(document).on({
+            ajaxStart: function () {
+                $body.addClass("loading");
+            },
+            ajaxStop: function () {
+                $body.removeClass("loading");
+            }
+        });
+
+         
+
         $(document).ready(function () {
 
-            $('#btn_pertanyaan').click(function () {
-                $('#div_mock').show('normal');
-                $('#div_mockempty').hide();
-            });
-
+            //activate div based on menu click
             $(".hijr_menu").click(function (e) {
                 //$(".form_hijr div").fadeOut('slow');
                 //$('#' + $(this).data('rel')).show('slow');
@@ -150,39 +184,220 @@
                 $("#" + target).show('normal').siblings("div").hide('normal');
             });
 
-            //$('#pertanyaan').click(function () {
-            //    $('#div_mockempty').show('normal');
-            //    $('#div_mock').hide();
-            //    $('#div_pertanyaan').show('normal');
+            //[] - 0 --hairi punya issue card
+            //[] -1 sahkan kehadiran kursus
+            //[] - 2 sahkan kesihatan
 
-            //    $('#div_paparsurat').hide();
-            //    $('#div_pengesahan').hide();
-            //    $('#div_ecard').hide();
-            //});
 
-            //$('#paparsurat').click(function () {
-            //    $('#div_paparsurat').show('normal');
+            $('#btn_pertanyaan').click(function () {
 
-            //    $('#div_pengesahan').hide();
-            //    $('#div_pertanyaan').hide();
-            //    $('#div_ecard').hide();
-            //});
+                $('#div_mock').hide();
+                $('#div_mockempty').show('normal');
+                $('#div_pesertadetails').hide();
 
-            //$('#pengesahan').click(function () {
-            //    $('#div_pengesahan').show('normal');
+                var ajaxURL = '@Url.Action("GetPeserta", "Peserta")';
+                var ic = '771127100119';
+                //var ic = '800904145743';
 
-            //    $('#div_paparsurat').hide();
-            //    $('#div_pertanyaan').hide();
-            //    $('#div_ecard').hide();
-            //});
+                jQuery.ajax({
+                    type: "POST",
+                    url: ajaxURL,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify({ 'ic': ic}),
+                    success: function (data) {
+                        console.log(data);
+                        $('#Nama').val(data.Nama);
+                        $('#NoKP').val(data.KadPengenalan); 
+                        $('#Alamat').val(data.Alamat1 + '\n' + data.Alamat2 + '\n' + data.Alamat3 + '\n' + data.Poskod + ' ' + data.Bandar + '\n' + data.Negeri);
+                        $('#NoAkaun').val(data.NoAkaun);
+                        $('#NoKT').val(data.NoKT);
+                        $('#NoKumpulan').val(data.NoKumpulan);
+                        //alert(data);
+                        $('#div_mock').show('normal');
+                        $('#div_mockempty').hide();
+                        $('#div_pertanyaan').hide();
+                        $('#div_pesertadetails').show('normal');
 
-            //$('#ecard').click(function () {
-            //    $('#div_ecard').show('normal');
+                        //set the kursus details
+                        $('#NegeriKursus').val(data.KursusPeserta.Negeri);
+                        $('#LokasiKursus').val(data.KursusPeserta.Lokasi);
+                        $('#TarikhKursus').val(data.KursusPeserta.Tarikh);
+                    },
+                    error: function (xhr, statustext, errorthrown) {
+                        alert("There was error.We'll try to fix that.:)");
+                        var err = "Error " + " " + statustext + " " + errorthrown;
+                        alert(err);
+                    }
+                });
 
-            //    $('#div_pengesahan').hide();
-            //    $('#div_paparsurat').hide();
-            //    $('#div_pertanyaan').hide();
-            //});
+              
+            });
+
+          
+
+            $('#btn_pengesahantawaran').click(function () {
+
+                var ajaxURL = '@Url.Action("UpdatePengesahanTawaran", "Peserta")';
+                var ic = '771127100119';
+
+                jQuery.ajax({
+                    type: "POST",
+                    url: ajaxURL,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify({ 'ic': ic }),
+                    success: function (data) {
+                        console.log(data);
+                        if(data.Success)
+                        {
+                            alert("Tawaran penerimaan disahkan.");
+                        }
+                        else {
+                            alert(data.Message)
+                        }
+                    },
+                    error: function (xhr, statustext, errorthrown) {
+                        alert("There was error.We'll try to fix that.:)");
+                        var err = "Error " + " " + statustext + " " + errorthrown;
+                        alert(err);
+                    }
+                });
+            });
+           
+
+            $('#btn_ecard').click(function () {
+                //get the card id and tied it to database
+                tagid = IssueCard('771127100119');
+                //PairEcard('771127100119', '2222');
+
+                
+            });
+
+            function IssueCard(icno) {
+                $.ajax({
+                    type: "POST",
+                    //url: "http://172.19.56.12:9012",
+                    url: "http://localhost:9012",
+                    //url: "http://dss.acr:9012",
+                    data: "<TransID>ACR1</TransID><Data><IPADDRESS>172.19.116.11</IPADDRESS><PORT>7020</PORT><INST_MSG>Please put the card</INST_MSG><FUNCTION>1</FUNCTION></Data>",
+                    dataType: 'xml',
+                    success: function (evt) {
+                        clientID = $(evt).find("SendToDSSResult").text();
+                        alert(clientID);
+                        tagid = $(clientID).find("TAGID").text();
+                        alert("tagid-->" + tagid);
+                        //alert(evt);
+
+                        //var xmlString = (new XMLSerializer()).serializeToString(data);
+                        //alert (xmlString.length);
+                        //alert (
+                        PairEcard(icno, tagid);
+
+
+
+                    },
+                    error: function (xhr, statustext, errorthrown) {
+                        alert("There was error.We'll try to fix that.:)");
+                        var err = "Error for IssueCard " + " " + statustext + " " + errorthrown;
+                        alert(err);
+                    }
+
+
+                });
+            }
+
+            function PairEcard(icno, tagid) {
+                var ajaxURL = '@Url.Action("PairCard", "Peserta")';
+                $.ajax({
+                    type: "POST",
+                    url: ajaxURL,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify({ 'ic': icno, 'tagid': tagid }),
+                    success: function (data) {
+
+                        if (data.Success)
+                            alert("Card Issued");
+                        else
+                            alert(data.Message);
+                    },
+                    error: function (xhr, statustext, errorthrown) {
+                        alert("There was error.We'll try to fix that.:)");
+                        var err = "Error for Paircard: " + " " + statustext + " " + errorthrown;
+                        alert(err);
+                    }
+
+
+                });
+            }
+
+            $('#btn_kursus').click(function () {
+                //alert("Kompom");
+                EcardKursusUpdate('771127100119');
+            });
+
+            function EcardKursusUpdate(icno) {
+                $.ajax({
+                    type: "POST",
+                    //url: "http://172.19.56.12:9012",
+                    url: "http://localhost:9012",
+                    data: "<TransID>ACR1</TransID><Data><IPADDRESS>172.19.116.11</IPADDRESS><PORT>7020</PORT><INST_MSG>Please put the card</INST_MSG><FUNCTION>3</FUNCTION><PROCESS>1</PROCESS></Data>",
+                    dataType: 'xml',
+                    success: function (evt) {
+                        clientID = $(evt).find("SendToDSSResult").text();
+                        alert(clientID);
+                        //tagid = $(clientID).find("TAGID").text();
+                        //alert("tagid-->" + tagid);
+                        //alert(evt);
+
+                        //var xmlString = (new XMLSerializer()).serializeToString(data);
+                        //alert (xmlString.length);
+                        //alert (
+                        DatabaseKursusUpdate(icno);
+
+
+
+                    },
+                    error: function (xhr, statustext, errorthrown) {
+                        alert("There was error.We'll try to fix that.:)");
+                        var err = "Error for EcardKursusUpdate " + " " + statustext + " " + errorthrown;
+                        alert(err);
+                    }
+
+
+                });
+            }
+
+            function DatabaseKursusUpdate(icno) {
+                var ajaxURL = '@Url.Action("UpdateKursus", "Peserta")';
+                $.ajax({
+                    type: "POST",
+                    url: ajaxURL,
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    data: JSON.stringify({ 'ic': icno }),
+                    success: function (data) {
+
+                        if (data.Success)
+                            alert("Selesai.");
+                        else
+                            alert(data.Message);
+                    },
+                    error: function (xhr, statustext, errorthrown) {
+                        alert("There was error.We'll try to fix that.:)");
+                        var err = "Error for DatabaseKursusUpdate: " + " " + statustext + " " + errorthrown;
+                        alert(err);
+                    }
+
+
+                });
+            }
+
+
+           
+
+     
         });
     </script>
     }

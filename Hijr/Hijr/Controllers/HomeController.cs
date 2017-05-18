@@ -10,6 +10,20 @@ namespace Hijr.Controllers
     {
         public ActionResult Index()
         {
+            Models.HijrViewModel hijrviewmodel = new Models.HijrViewModel();
+            //using (HijrDataLayer.HIJREntities ent = new HijrDataLayer.HIJREntities())
+            //{
+
+            //    var k = from a in ent.RefKursusPerdanas
+            //            select a;
+
+            //    foreach(var b in k)
+            //    {
+            //        Models.Kursus x = new Models.Kursus();
+            //        x.
+            //    }
+            //}
+
             return View();
         }
 

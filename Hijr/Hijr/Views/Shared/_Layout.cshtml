@@ -6,6 +6,14 @@
     <title>@ViewBag.Title - HIJR</title>
     <link rel="icon" href="~/img/th-small-logo.png" />
     @Styles.Render("~/Content/css")
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <style>
+        .disabled{
+    pointer-events:none;
+    opacity:0.4;
+}
+    </style>
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
@@ -50,14 +58,18 @@
             </div>
             <div class="navbar-collapse navbar-hijr collapse">
                 <ul class="nav navbar-nav">
+                    <li>
+                        <a href="#" id="pertanyaanmaklumat" class="hijr_menu" data-rel="div_pertanyaan">Pertanyaan Maklumat JH</a>
+                        @*@Html.ActionLink("Pertanyaan Maklumat JH", "Index", "PertanyaanMaklumat")*@
+                    </li>
                     @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
                     <li class="dropdown messages-menu">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" >
                             Tawaran
                         </a>
                         <ul class="dropdown-menu" role="menu" >
                             <li>
-                                @*@Html.ActionLink("Pertanyaan Surat Tawaran", "Index", "Tawaran")*@
+                               
                                 <a href="#" id="pertanyaan" class="hijr_menu" data-rel="div_pertanyaan">Pertanyaan Surat Tawaran</a>
                             </li>
                             <li>
@@ -107,13 +119,13 @@
                                 <a href="#" id="daftarkelanajaya" class="hijr_menu" data-rel="div_daftarkelanajaya">Kelana Jaya</a>
                             </li>
                             <li>
-                                <a href="#" id="daftarhotel" class="hijr_menu" data-rel="div_daftarhotels">Hotel</a>
+                                <a href="#" id="daftarhotel" class="hijr_menu" data-rel="div_daftarhotel">Hotel</a>
                             </li>
                         </ul>
                     </li>
                     <li><a href="#">Maklumat</a></li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                 </ul>
                
         </div>
@@ -126,6 +138,7 @@
         <footer>
             <p>&copy; @DateTime.Now.Year-Tabung Haji</p>
         </footer>
+        <div class="modaluniversal"><!-- Place at bottom of page --></div>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

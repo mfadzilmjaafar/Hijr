@@ -5,6 +5,8 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hijr", "Hijr\Hijr.csproj", "{BFAC55CA-1690-45A5-AD04-BCEBD96964F8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HijrDataLayer", "HijrDataLayer\HijrDataLayer.csproj", "{0A7E5AB1-F73B-4893-91BB-629C6AF8BA58}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BFAC55CA-1690-45A5-AD04-BCEBD96964F8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFAC55CA-1690-45A5-AD04-BCEBD96964F8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFAC55CA-1690-45A5-AD04-BCEBD96964F8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A7E5AB1-F73B-4893-91BB-629C6AF8BA58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A7E5AB1-F73B-4893-91BB-629C6AF8BA58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A7E5AB1-F73B-4893-91BB-629C6AF8BA58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A7E5AB1-F73B-4893-91BB-629C6AF8BA58}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

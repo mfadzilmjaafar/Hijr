@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="29c88daae9d64fc9aa6969d0c44d3c91" Name="Diagram1">
+        <EntityTypeShape EntityType="HIJRModel.CardStock" Width="1.5" PointX="3" PointY="8.125" />
+        <EntityTypeShape EntityType="HIJRModel.CIF" Width="1.5" PointX="0.75" PointY="8.25" />
+        <EntityTypeShape EntityType="HIJRModel.DokumenRujukan" Width="1.5" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="HIJRModel.DokumenTravel" Width="1.5" PointX="3" PointY="13" />
+        <EntityTypeShape EntityType="HIJRModel.Kesihatan" Width="1.5" PointX="3" PointY="5.5" />
+        <EntityTypeShape EntityType="HIJRModel.Pergerakan" Width="1.5" PointX="3" PointY="1.625" />
+        <EntityTypeShape EntityType="HIJRModel.RefBagasi" Width="1.5" PointX="5.75" PointY="6.75" />
+        <EntityTypeShape EntityType="HIJRModel.RefNegeri" Width="1.5" PointX="5.75" PointY="1.125" />
+        <AssociationConnector Association="HIJRModel.FK_CardStock_CIF" />
+        <AssociationConnector Association="HIJRModel.FK_DokumenTravel_CIF" />
+        <AssociationConnector Association="HIJRModel.FK_Kesihatan_CIF" />
+        <AssociationConnector Association="HIJRModel.FK_Pergerakan_CIF" />
+        <AssociationConnector Association="HIJRModel.FK_CIF_RefNegeri" />
+        <EntityTypeShape EntityType="HIJRModel.Penempatan" Width="1.5" PointX="10.25" PointY="5" />
+        <EntityTypeShape EntityType="HIJRModel.RefKursusPerdana" Width="1.5" PointX="8" PointY="0.875" />
+        <AssociationConnector Association="HIJRModel.FK_Penempatan_CIF" />
+        <AssociationConnector Association="HIJRModel.FK_Penempatan_RefKursusPerdana" />
+        <AssociationConnector Association="HIJRModel.FK_RefKursusPerdana_RefNegeri" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
